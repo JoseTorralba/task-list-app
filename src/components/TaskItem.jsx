@@ -21,6 +21,7 @@ const TaskItem = ({ item, deleteTask }) => {
         >
           {item.progress}
         </div>
+        <div className={styles.titleDisplay}>{item.title}</div>
         <div className={styles.textDisplay}>{item.text}</div>
         <button className={styles.close} onClick={() => deleteTask(item.id)}>
           <FaTrashAlt color='#D32F2F' />

@@ -6,36 +6,39 @@ import styles from './TaskForm.module.css';
 
 const TaskForm = ({ addTask }) => {
   const [text, setText] = useState('');
+  const [title, setTitle] = useState('');
   const [progress, setRating] = useState('not started');
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const [message, setMessage] = useState('');
 
   const handleTextChange = e => {
-    if (text === '') {
-      setBtnDisabled(true);
-      setMessage(null);
-    } else if (text !== '' && text.trim().length <= 10) {
-      setMessage('Text must be at least 10 characters long');
-      setBtnDisabled(true);
-    } else {
-      setMessage(null);
+    if (title.trim().length !== '' && text.trim().length !== '') {
       setBtnDisabled(false);
     }
 
     setText(e.target.value);
   };
 
+  const handleTitleChange = e => {
+    if (title.trim().length !== '' && text.trim().length !== '') {
+      setBtnDisabled(false);
+    }
+
+    setTitle(e.target.value);
+  };
+
   const submitHandler = e => {
     e.preventDefault();
 
     // Constructs New Task Object
-    if (text.trim().length > 10) {
+    if (text.trim().length !== '') {
       const newTask = {
+        title,
         text,
         progress,
       };
 
       addTask(newTask);
+      setTitle('');
       setText('');
       setBtnDisabled(true);
     }
@@ -52,17 +55,24 @@ const TaskForm = ({ addTask }) => {
 
         <div className={styles['input-group']}>
           <input
+            onChange={handleTitleChange}
+            type='title'
+            placeholder='Enter task title...'
+            value={title}
+            required
+          />
+
+          <input
             onChange={handleTextChange}
             type='text'
-            placeholder='Enter a task...'
+            placeholder='Enter task description...'
             value={text}
+            required
           />
           <Button type='submit' isDisabled={btnDisabled}>
             Create Task
           </Button>
         </div>
-
-        {message && <div className={styles.message}>{message}</div>}
       </form>
     </Card>
   );

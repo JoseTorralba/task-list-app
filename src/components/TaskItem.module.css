@@ -1,24 +1,31 @@
 .task {
-  align-items: center;
+  /* align-items: center; */
   display: flex;
   flex-direction: column;
 }
 
 .progressDisplay {
+  align-self: center;
   /* border: 4px #2e2e2e solid; */
   border: 2px #fff solid;
   border-radius: 3px;
   color: #fff;
   font-size: 1.8rem;
   font-weight: 600;
-  height: 50px;
-  padding: 10px;
+  padding: 0.6rem;
   position: absolute;
   text-align: center;
   /* text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); */
   text-transform: capitalize;
   top: -20px;
   width: 150px;
+}
+
+.titleDisplay {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  /* margin-bottom: 1rem; */
 }
 
 .textDisplay {
