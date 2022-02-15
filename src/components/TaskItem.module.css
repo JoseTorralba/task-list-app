@@ -1,0 +1,41 @@
+.task {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.progressDisplay {
+  /* border: 4px #2e2e2e solid; */
+  border: 2px #fff solid;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  height: 50px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  /* text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); */
+  text-transform: capitalize;
+  top: -20px;
+  width: 150px;
+}
+
+.textDisplay {
+  font-size: 1.4rem;
+  /* margin-bottom: 1rem; */
+}
+
+.close,
+.edit {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.edit {
+  right: 40px;
+}

@@ -1,0 +1,52 @@
+ul {
+  list-style: none;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 30px 0 40px;
+}
+
+.progress li {
+  position: relative;
+  background: #f4f4f4;
+  width: 150px;
+  height: 50px;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.8rem;
+  border: 1px #eee solid;
+  transition: 0.3s;
+}
+
+.progress li label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 50px;
+  padding: 10px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.progress li:hover {
+  background: #009688;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .progress li {
+    margin: 10px 3px;
+  }
+
+  .progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0 40px;
+  }
+}

@@ -1,0 +1,11 @@
+.taskList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 30px;
+}
+
+@media only screen and (max-width: 56.25em) {
+  .taskList {
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  }
+}
