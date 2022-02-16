@@ -1,9 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { useContext } from 'react';
 import TaskItem from './TaskItem';
 import Card from './ui/Card';
 import styles from './TaskList.module.css';
+import TaskContext from '../context/TaskContext';
 
-const TaskList = ({ task, deleteTask }) => {
+const TaskList = () => {
+  const { task } = useContext(TaskContext);
+
   if (!task || task.length === 0) {
     return (
       <Card>
@@ -22,7 +26,7 @@ const TaskList = ({ task, deleteTask }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <TaskItem key={item.id} item={item} deleteTask={deleteTask} />
+            <TaskItem key={item.id} item={item} />
           </motion.div>
         ))}
       </AnimatePresence>

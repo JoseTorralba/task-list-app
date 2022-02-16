@@ -1,14 +1,26 @@
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import TaskContext from '../context/TaskContext';
 import Card from './ui/Card';
 import Button from './ui/Button';
 import ProgressSelect from './progress/ProgressSelect';
 import styles from './TaskForm.module.css';
 
-const TaskForm = ({ addTask }) => {
+const TaskForm = () => {
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
-  const [progress, setRating] = useState('not started');
+  const [progress, setProgress] = useState('not started');
   const [btnDisabled, setBtnDisabled] = useState(true);
+
+  const { addTask, taskEdit, updateTask } = useContext(TaskContext);
+
+  useEffect(() => {
+    if (taskEdit.edit === true) {
+      setBtnDisabled(false);
+      setTitle(taskEdit.item.title);
+      setText(taskEdit.item.text);
+      setProgress(taskEdit.item.progress);
+    }
+  }, [taskEdit]);
 
   const handleTextChange = e => {
     if (title.trim().length !== '' && text.trim().length !== '') {
@@ -37,7 +49,12 @@ const TaskForm = ({ addTask }) => {
         progress,
       };
 
-      addTask(newTask);
+      if (taskEdit.edit === true) {
+        updateTask(taskEdit.item.id, newTask);
+      } else {
+        addTask(newTask);
+      }
+
       setTitle('');
       setText('');
       setBtnDisabled(true);
@@ -51,7 +68,7 @@ const TaskForm = ({ addTask }) => {
           <h2>What are your main tasks for today?</h2>
         </div>
 
-        <ProgressSelect select={progress => setRating(progress)} />
+        <ProgressSelect select={progress => setProgress(progress)} />
 
         <div className={styles['input-group']}>
           <input

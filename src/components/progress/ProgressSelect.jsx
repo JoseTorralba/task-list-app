@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import TaskContext from '../../context/TaskContext';
 import styles from './ProgressSelect.module.css';
 
 const ProgressSelect = ({ select }) => {
   const [selected, setSelected] = useState('not started');
+
+  const { taskEdit } = useContext(TaskContext);
+
+  useEffect(() => {
+    setSelected(taskEdit.item.progress);
+  }, [taskEdit]);
 
   const handleChange = e => {
     setSelected(e.currentTarget.value);
@@ -19,6 +26,7 @@ const ProgressSelect = ({ select }) => {
           value='not started'
           onChange={handleChange}
           checked={selected === 'not started'}
+          required
         />
         <label htmlFor='progress1'>Not Started</label>
       </li>

@@ -1,8 +1,12 @@
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt, FaEdit } from 'react-icons/fa';
+import { useContext } from 'react';
+import TaskContext from '../context/TaskContext';
 import Card from './ui/Card';
 import styles from './TaskItem.module.css';
 
-const TaskItem = ({ item, deleteTask }) => {
+const TaskItem = ({ item }) => {
+  const { deleteTask, editTask } = useContext(TaskContext);
+
   let progressColor;
 
   if (item.progress === 'not started') {
@@ -23,8 +27,13 @@ const TaskItem = ({ item, deleteTask }) => {
         </div>
         <div className={styles.titleDisplay}>{item.title}</div>
         <div className={styles.textDisplay}>{item.text}</div>
+
         <button className={styles.close} onClick={() => deleteTask(item.id)}>
           <FaTrashAlt color='#D32F2F' />
+        </button>
+
+        <button className={styles.edit} onClick={() => editTask(item)}>
+          <FaEdit color='#009688' />
         </button>
       </div>
     </Card>
