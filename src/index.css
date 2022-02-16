@@ -8,11 +8,8 @@
   box-sizing: inherit;
 }
 
-/* light mode background: #f7f7f8 */
-
 html,
 body {
-  background-color: #2e2e2e;
   box-sizing: border-box;
   color: #fff;
   font-size: 62.5%;
@@ -21,6 +18,15 @@ body {
   margin: 0;
   text-rendering: optimizeLegibility;
   font-family: 'Poppins', sans-serif;
+  transition: all 0.2s;
+}
+
+.header-light {
+  background-color: #f7f7f8;
+}
+
+.header-dark {
+  background-color: #2e2e2e !important;
 }
 
 .mb-big {

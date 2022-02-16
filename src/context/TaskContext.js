@@ -5,6 +5,9 @@ const TaskContext = createContext();
 
 // Provider
 export const TaskProvider = ({ children }) => {
+  const [darkMode, setDarkMode] = useState(false);
+  const modeHandler = () => setDarkMode(prevState => !prevState);
+
   const [task, setTask] = useState([
     {
       id: 1,
@@ -61,7 +64,16 @@ export const TaskProvider = ({ children }) => {
 
   return (
     <TaskContext.Provider
-      value={{ task, taskEdit, deleteTask, addTask, editTask, updateTask }}
+      value={{
+        task,
+        taskEdit,
+        darkMode,
+        deleteTask,
+        addTask,
+        editTask,
+        updateTask,
+        modeHandler,
+      }}
     >
       {children}
     </TaskContext.Provider>

@@ -1,13 +1,16 @@
 import styles from './Card.module.css';
+import { useContext } from 'react';
+import TaskContext from '../../context/TaskContext';
 
-const Card = ({ children, reverse, cname }) => {
-  // return <div className={`card ${reverse && 'reverse'}`}>{children}</div>;
+const Card = ({ children, cname }) => {
+  const { darkMode } = useContext(TaskContext);
+
   return (
     <div
       className={`${styles.card} ${cname}`}
       style={{
-        backgroundColor: reverse ? ' rgba(0, 0, 0, 0.4)' : '#fff',
-        color: reverse ? '#fff' : '#000',
+        backgroundColor: darkMode ? ' rgba(0, 0, 0, 0.4)' : '#fff',
+        color: darkMode ? '#fff' : '#000',
       }}
     >
       {children}

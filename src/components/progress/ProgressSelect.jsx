@@ -4,7 +4,6 @@ import styles from './ProgressSelect.module.css';
 
 const ProgressSelect = ({ select }) => {
   const [selected, setSelected] = useState('not started');
-
   const { taskEdit } = useContext(TaskContext);
 
   useEffect(() => {
