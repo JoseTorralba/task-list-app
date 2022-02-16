@@ -32,12 +32,16 @@ label {
 
 input {
   flex-grow: 2;
-  margin-right: 3rem;
+
   padding: 1rem;
   /* border: none; */
   border: 1px solid #ccc;
   font-size: 1.6rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+input:not(:last-child) {
+  margin-right: 3rem;
 }
 
 input:focus {
@@ -51,8 +55,28 @@ input:focus {
   color: rebeccapurple;
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 37.5em) {
+  .input-group {
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    flex-direction: column;
+
+    width: 60%;
+  }
+
   .input-group input {
-    width: 80%;
+    width: 100%;
+  }
+
+  .input-group input:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 25.875em) {
+  .input-group {
+    width: 100%;
   }
 }

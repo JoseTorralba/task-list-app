@@ -6,14 +6,14 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin: 30px 0 40px;
+  margin: 3rem 0 4rem;
 }
 
 .progress li {
   position: relative;
   width: 150px;
   height: 50px;
-  padding: 10px;
+  /* padding: 1rem; */
   text-align: center;
   font-size: 1.8rem;
   border: 1px rgba(238, 238, 238, 0.5) solid;
@@ -36,9 +36,14 @@ ul {
   color: #fff;
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 37.5em) {
   .progress li {
-    margin: 10px 3px;
+    margin: 1rem 0;
+    width: 60%;
+  }
+
+  .progress li label {
+    width: 100%;
   }
 
   .progress {
@@ -46,6 +51,13 @@ ul {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 30px 0 40px;
+
+    margin: 4rem 0 2rem;
+  }
+}
+
+@media only screen and (max-width: 25.875em) {
+  .progress li {
+    width: 100%;
   }
 }

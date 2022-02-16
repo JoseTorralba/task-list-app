@@ -18,7 +18,7 @@ body {
   margin: 0;
   text-rendering: optimizeLegibility;
   font-family: 'Poppins', sans-serif;
-  transition: all 0.2s;
+  transition: background-color 0.2s;
 }
 
 .header-light {
