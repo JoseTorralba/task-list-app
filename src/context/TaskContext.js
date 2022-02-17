@@ -8,6 +8,8 @@ export const TaskProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
   const modeHandler = () => setDarkMode(prevState => !prevState);
 
+  const [toggleEdit, setToggleEdit] = useState(false);
+
   const [task, setTask] = useState([
     {
       id: 1,
@@ -52,10 +54,13 @@ export const TaskProvider = ({ children }) => {
     setTask(
       task.map(item => (item.id === id ? { ...item, ...updItem } : item))
     );
+
+    setToggleEdit(false);
   };
 
   // Set Task Item to be edited
   const editTask = item => {
+    setToggleEdit(true);
     setTaskEdit({
       item,
       edit: true,
@@ -68,6 +73,7 @@ export const TaskProvider = ({ children }) => {
         task,
         taskEdit,
         darkMode,
+        toggleEdit,
         deleteTask,
         addTask,
         editTask,

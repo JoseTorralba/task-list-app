@@ -11,7 +11,7 @@ const TaskForm = () => {
   const [progress, setProgress] = useState('not started');
   const [btnDisabled, setBtnDisabled] = useState(true);
 
-  const { addTask, taskEdit, updateTask } = useContext(TaskContext);
+  const { addTask, taskEdit, toggleEdit, updateTask } = useContext(TaskContext);
 
   useEffect(() => {
     if (taskEdit.edit === true) {
@@ -87,7 +87,7 @@ const TaskForm = () => {
             required
           />
           <Button type='submit' isDisabled={btnDisabled}>
-            Create Task
+            {!toggleEdit ? 'Create Task' : 'Update Task'}
           </Button>
         </div>
       </form>
