@@ -32,6 +32,10 @@
   font-size: 1.4rem;
   /* margin-bottom: 1rem; */
 }
+.titleDisplay,
+.textDisplay {
+  overflow-wrap: anywhere;
+}
 
 .close,
 .edit {
