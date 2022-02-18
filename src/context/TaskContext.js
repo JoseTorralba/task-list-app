@@ -6,9 +6,8 @@ const TaskContext = createContext();
 // Provider
 export const TaskProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
-  const modeHandler = () => setDarkMode(prevState => !prevState);
 
-  const [toggleEdit, setToggleEdit] = useState(false);
+  const modeHandler = () => setDarkMode(prevState => !prevState);
 
   const [task, setTask] = useState([
     {
@@ -31,10 +30,13 @@ export const TaskProvider = ({ children }) => {
     },
   ]);
 
+  const [toggleEdit, setToggleEdit] = useState(false);
+
   const [taskEdit, setTaskEdit] = useState({
     item: {},
-    edit: false,
   });
+
+  const [deleteText, setDeletetext] = useState(false);
 
   // Creates a Task
   const addTask = newTask => {
@@ -46,6 +48,11 @@ export const TaskProvider = ({ children }) => {
   const deleteTask = id => {
     if (window.confirm('Are you sure you want to delete this task?')) {
       setTask(task.filter(item => item.id !== id));
+
+      if (toggleEdit) {
+        setToggleEdit(false);
+        setDeletetext(true);
+      }
     }
   };
 
@@ -63,7 +70,6 @@ export const TaskProvider = ({ children }) => {
     setToggleEdit(true);
     setTaskEdit({
       item,
-      edit: true,
     });
   };
 
@@ -74,6 +80,7 @@ export const TaskProvider = ({ children }) => {
         taskEdit,
         darkMode,
         toggleEdit,
+        deleteText,
         deleteTask,
         addTask,
         editTask,

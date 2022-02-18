@@ -19,12 +19,15 @@ const TaskList = () => {
   return (
     <div className={styles.taskList}>
       <AnimatePresence>
-        {task.map(item => (
+        {task.map((item, i) => (
           <motion.div
             key={item.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{
+              opacity: 0,
+              translateY: 30,
+            }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
           >
             <TaskItem key={item.id} item={item} />
           </motion.div>

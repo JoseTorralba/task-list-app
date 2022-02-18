@@ -17,7 +17,7 @@ ul {
   text-align: center;
   font-size: 1.8rem;
   border: 1px rgba(238, 238, 238, 0.5) solid;
-  transition: 0.2s;
+  transition: 0.1s;
 }
 
 .progress li label {
